@@ -4,7 +4,7 @@ export default function songReducer(state = [], action){
 		//and object.assign() to create a deep copy of the action object
 		case 'CREATE_SONG':
 			return [...state,
-			Object.assign({}, action.song)]
+			Object.assign({}, action.song)];
 		
 		default:
 			return state;

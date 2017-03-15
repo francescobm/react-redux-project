@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 import * as songActions from '../../actions/songActions';
 
 class SongsPage extends React.Component {
@@ -20,13 +20,17 @@ class SongsPage extends React.Component {
     }
     onClickSave(){
         //thanks to connect function below we can dispatch an action
-        this.props.dispatch(songActions.createSong(this.state.song))
+        this.props.createSong(this.state.song);
+    }
+    songRow(song, index){
+        return <div key={index}>{song.title}</div>;
     }
     render(){
         return(
             <div className="row">
                 <div className="col-xs-12 text-center">
-                    <h1>Songs List</h1>
+                    <h1>Songs</h1>
+                    {this.props.songs.map(this.songRow)}
                     <h2>Add Song</h2>
                     <input
                         type="text"
@@ -41,10 +45,20 @@ class SongsPage extends React.Component {
         );
     }
 }
-
+SongsPage.propTypes = {
+    songs: PropTypes.array.isRequired,
+    createSong: PropTypes.func.isRequired
+};
 function mapStateToProps(state, ownProps){
     return {
         songs: state.songs 
     };
 }
-export default connect(mapStateToProps)(SongsPage); 
+//this function determines which actions are available in the component
+//it's useful beacuse it allows to dispatch actions from component in a cleaner way
+function mapDispatchToProps(dispatch){
+    return{
+        createSong: song => dispatch(songActions.createSong(song))
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SongsPage); 
