@@ -34,7 +34,7 @@ const songs = [
     watchHref: "https://www.youtube.com/watch?v=-sUXMzkh-jI",
     authorId: "acdc",
     length: "2:30",
-    category: "Career"
+    category: "Rock & Roll"
   }
 ];
 
@@ -48,7 +48,7 @@ const generateId = (song) => {
 };
 
 class songApi {
-  static getAllsongs() {
+  static getAllSongs() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], songs));

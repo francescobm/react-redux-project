@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as songActions from '../../actions/songActions';
-
+import SongList from './SongList';
+// container component
 class SongsPage extends React.Component {
     constructor(props, context){
         super(props, context);
@@ -26,11 +27,12 @@ class SongsPage extends React.Component {
         return <div key={index}>{song.title}</div>;
     }
     render(){
+        const {songs} = this.props;
         return(
             <div className="row">
-                <div className="col-xs-12 text-center">
+                <div className="col-xs-12">
                     <h1>Songs</h1>
-                    {this.props.songs.map(this.songRow)}
+                    <SongList songs = {songs}/>
                     <h2>Add Song</h2>
                     <input
                         type="text"
