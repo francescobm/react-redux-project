@@ -33,15 +33,6 @@ class SongsPage extends React.Component {
                 <div className="col-xs-12">
                     <h1>Songs</h1>
                     <SongList songs = {songs}/>
-                    <h2>Add Song</h2>
-                    <input
-                        type="text"
-                        onChange={this.onTitleChange}
-                        value={this.state.song.title} />
-                    <input
-                        type="submit"
-                        value="Save"
-                        onClick={this.onClickSave} />
                 </div>
             </div>
         );

@@ -6,11 +6,11 @@ const SongList = ({songs}) =>{
         <table className="table">
             <thead>
                 <tr>
+                    <th>Video</th>
                     <th>Title</th>
                     <th>Author</th>
-                    <th>Category</th>
+                    <th>Genre</th>
                     <th>Length</th>
-                    <th>Video</th>
                 </tr>
             </thead>
             <tbody>
