@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as songActions from '../../actions/songActions';
 import SongList from './SongList';
+import {browserHistory} from 'react-router';
 // container component
 class SongsPage extends React.Component {
     constructor(props, context){
@@ -13,6 +14,10 @@ class SongsPage extends React.Component {
         //better to do binding here as in render() would cause performance issues
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onClickSave = this.onClickSave.bind(this);
+        this.redirectToAddSongPage = this.redirectToAddSongPage.bind(this);
+    }
+    redirectToAddSongPage(){
+        browserHistory.push('/song');
     }
     onTitleChange(event){
         const song = this.state.song;
@@ -32,6 +37,11 @@ class SongsPage extends React.Component {
             <div className="row">
                 <div className="col-xs-12">
                     <h1>Songs</h1>
+                    <input 
+                        type="submit"
+                        value="Add Course"
+                        className="btn btn-primary"
+                        onClick={this.redirectToAddSongPage}/>
                     <SongList songs = {songs}/>
                 </div>
             </div>
