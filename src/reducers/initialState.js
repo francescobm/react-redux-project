@@ -2,5 +2,5 @@
 export default {
     authors:[],
     songs:[],
-    numAjaxCallInProgress: 0
+    ajaxCallsInProgress: 0
 };

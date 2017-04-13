@@ -4,13 +4,15 @@ import {bindActionCreators} from 'redux';
 import * as songActions from '../../actions/songActions';
 import SongForm from './SongForm';
 import {browserHistory} from 'react-router';
+import toastr from 'toastr';
 
-class ManageSongPage extends React.Component {
+export class ManageSongPage extends React.Component {
     constructor(props, context){
         super(props, context);
         this.state = {
             song: Object.assign({}, this.props.song),
-            errors: {}
+            errors: {},
+            saving: false
         };
         this.updateSongState = this.updateSongState.bind(this);
         this.saveSong = this.saveSong.bind(this);
@@ -27,10 +29,32 @@ class ManageSongPage extends React.Component {
         song[field] = event.target.value;
         return this.setState({song: song});
     }
+    songFromIsValid(){
+        let formIsValid = true;
+        let errors = {};
+
+        if(this.state.song.title.length <5){
+            errors.title = 'Title must be at least 5 charcters';
+            formIsValid = false;
+        }
+
+        this.setState({errors: errors});
+        return formIsValid;
+    }
     saveSong(event){
         event.preventDefault();
-        this.props.actions.saveSong(this.state.song);
-        browserHistory.push('/songs');
+        if(!this.songFromIsValid()){
+            return;
+        }
+        this.setState({saving:true});
+        this.props.actions.saveSong(this.state.song).then(()=>{
+            this.setState({saving:false});
+            toastr.success('Course saved');
+            browserHistory.push('/songs');
+        }).catch(error=>{
+            this.setState({saving:false});
+            toastr.error(error);
+        });
     }
     render(){
         return(
@@ -42,6 +66,7 @@ class ManageSongPage extends React.Component {
                 onSave = {this.saveSong}
                 song={this.state.song}
                 errors={this.state.errors}
+                saving={this.state.saving}
                 />
             </div>
         );
