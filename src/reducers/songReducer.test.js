@@ -40,6 +40,5 @@ describe('Song Reducer', ()=>{
         expect(updatedSong.title).toEqual('Modified A');
         expect(untouchedSong.title).toEqual('B');
         expect(newState.length).toEqual(2);
-    })
-
-})
+    });
+});

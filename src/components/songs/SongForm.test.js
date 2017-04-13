@@ -30,5 +30,5 @@ describe('SongForm', ()=>{
         expect(wrapper.find('input').props().value).toBe('Saving ...');
     });
 
-})
+});
 

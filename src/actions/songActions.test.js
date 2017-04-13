@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as SongActions from './SongActions';
+import * as SongActions from './songActions';
 import * as types from './actionTypes';
 
 //Test a sync action

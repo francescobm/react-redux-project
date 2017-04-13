@@ -1,7 +1,10 @@
-## A React & Redux web application
+## A React & Redux web application written in ES6
 Learning the benefits of FLUX architectural pattern and functional programming.
+In this repo you can find an example of a very simple interactive application written with Redux and ReactJs.
+
 
 ### Testing
+In the repo there are some examples on how to test react components, reducers and actions.
 
 - Testing framework: **Mocha**; 
 - Assertion library: **Expect**;
