@@ -4,7 +4,7 @@ In this repo you can find an example of a very simple interactive application wr
 
 
 ### Testing
-In the repo there are some examples on how to test react components, reducers and actions.
+In the repo there are some examples on how to test react components, reducers, actions, thunks and store.
 
 - Testing framework: **Mocha**; 
 - Assertion library: **Expect**;

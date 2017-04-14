@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as songActions from '../../actions/songActions';
 import SongForm from './SongForm';
 import {browserHistory} from 'react-router';
+import {authorsFormattedForDropdown} from '../../selectors/selectors';
 import toastr from 'toastr';
 
 export class ManageSongPage extends React.Component {
@@ -90,16 +91,10 @@ function mapStateToProps(state, ownProps){
     if(songId && state.songs.length > 0){
         song = getSongById(state.songs, songId);
     }
-    const authorsFormattedForDropdown = state.authors.map(author=>{
-        return {
-            value: author.id,
-            text: author.firstName + ' ' + author.lastName
-        };
-    });
 
     return {
         song: song,
-        authors: authorsFormattedForDropdown
+        authors: authorsFormattedForDropdown(state.authors)
     };
 }
 //this function determines which actions are available in the component

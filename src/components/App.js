@@ -5,11 +5,13 @@ import {connect} from 'react-redux';
 class App extends React.Component {
     render(){
         return(
-            <div className="container">
+            <div>
                 <Header 
                     loading={this.props.loading}
                 />
-                {this.props.children}
+                <div className="container">
+                    {this.props.children}
+                </div>
             </div>
         );
     }
