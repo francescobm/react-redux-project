@@ -5,7 +5,7 @@ class AboutPage extends React.Component {
         return (
             <div>
                 <h1>About the project</h1>
-                <p>This app uses Redux and Reactjs. It might be extended in future with ExpressJS and Mongodb.</p>
+                <p>This simple app is written in ES6 and it adopts Redux and Reactjs.</p>
             </div>
         );
     }
